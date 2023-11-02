@@ -1,7 +1,7 @@
 // When working a form, we want to create a piece of state to hold onto each input so that we can build out a new task object to send up to array and add it to the list of tasks
 import React, { useState } from "react";
 
-function NewTaskForm({ categories }) {
+function NewTaskForm({ categories, handleAddNewTask }) {
   const [details, setDetails] = useState("");
   const [category, setCategory] = useState("");
 
@@ -9,17 +9,25 @@ function NewTaskForm({ categories }) {
     // Add in the value={} on lines 15 and 19
 
   const handleChangedDetails = (e) => {
-    e.preventDefault();
     setDetails(e.target.value);
   }
 
   const handleCategoryChange = (e) => {
-    e.preventDefault();
     setCategory(e.target.value)
   }
 
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    let newTask = {text: details, category: category}
+    // console.log(newTask);
+
+    handleAddNewTask(newTask);
+  }
+
   return (
-    <form className="new-task-form">
+    // Need to submit the form and sent it back up to App.js in order to add the new task to the array (list)
+    <form className="new-task-form" onSubmit={handleSubmit}>
       <label>
         Details
         <input type="text" name="text" value={details} onChange={handleChangedDetails} />

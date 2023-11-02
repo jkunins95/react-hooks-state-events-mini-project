@@ -25,12 +25,22 @@ function App() {
     setTasks(filteredTasks);
   };
 
+  const handleAddNewTask = (newTask) => {
+    // console.log(newTask);
+    // We want the new task to be added into the list
+
+    // Use the spread operator
+      // [...tasks] = makes a copy of the established list
+      // newTasks = add the new task into the list
+    setTasks([...tasks, newTask]);
+  };
+
 
   return (
     <div className="App">
       <h2>My tasks</h2>
-      <CategoryFilter />
-      <NewTaskForm categories={categories} />
+      <CategoryFilter tasks={tasks} setTasks={setTasks} />
+      <NewTaskForm categories={categories} handleAddNewTask={handleAddNewTask} />
       <TaskList tasks={tasks} handleDeleteTask={handleDeleteTask} />
     </div>
   );
