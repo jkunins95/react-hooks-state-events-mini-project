@@ -1,6 +1,6 @@
 import React from "react";
 
-function Task({task, handleDeleteTask}) {
+function Task({ task, handleDeleteTask }) {
 
   const handleDelete = () => {
     handleDeleteTask(task);
