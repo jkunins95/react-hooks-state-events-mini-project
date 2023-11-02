@@ -8,12 +8,19 @@ import { CATEGORIES, TASKS } from "../data";
 // console.log({ CATEGORIES, TASKS });
 
 function App() {
+  const [tasks, setTasks] = useState(TASKS);
+
+  const handleDelete = (index) => {
+    setTasks(tasks.filter((task, i) => i !== index))
+  };
+
+
   return (
     <div className="App">
       <h2>My tasks</h2>
       <CategoryFilter />
       <NewTaskForm />
-      <TaskList />
+      <TaskList tasks={tasks} setTasks={setTasks} handleDelete={handleDelete} />
     </div>
   );
 }
