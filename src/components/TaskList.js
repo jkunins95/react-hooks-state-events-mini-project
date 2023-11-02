@@ -1,11 +1,11 @@
 import React from "react";
-import Task from './Task';
+import Task from "./Task";
 
-function TaskList({ tasks, handleDelete }) {
+function TaskList({ tasks }) {
   return (
     <div className="tasks">
-      {tasks.map((task, index) => (
-        <Task key={task.text} text={task.text} category={task.category} onDelete={() => handleDelete(index)}/>
+      {tasks.map(task => (
+        <Task task={task} />
       ))}
     </div>
   );
