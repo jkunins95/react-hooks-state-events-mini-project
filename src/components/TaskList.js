@@ -1,12 +1,12 @@
 import React from "react";
 import Task from "./Task";
 
-function TaskList({ tasks }) {
+function TaskList({ tasks, handleDeleteTask }) {
   return (
     <div className="tasks">
       {tasks.map(task => (
         // need to add a key prop (since there is no ID available, can just use "text" as the unique identifier)
-        <Task key={task.text} task={task} />
+        <Task key={task.text} task={task} handleDeleteTask={handleDeleteTask} />
       ))}
     </div>
   );
