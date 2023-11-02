@@ -8,15 +8,25 @@ function NewTaskForm({ categories }) {
   // Controlled Components - make the value of the inputs tied to the piece of state that they are responsible for to control the form
     // Add in the value={} on lines 15 and 19
 
+  const handleChangedDetails = (e) => {
+    e.preventDefault();
+    setDetails(e.target.value);
+  }
+
+  const handleCategoryChange = (e) => {
+    e.preventDefault();
+    setCategory(e.target.value)
+  }
+
   return (
     <form className="new-task-form">
       <label>
         Details
-        <input type="text" name="text" value={details} />
+        <input type="text" name="text" value={details} onChange={handleChangedDetails} />
       </label>
       <label>
         Category
-        <select name="category" value={category}>
+        <select name="category" value={category} onChange={handleCategoryChange}>
           {categories.map(category => (
             // lower case "option" creates a tag for each category name
             <option>{category}</option>
